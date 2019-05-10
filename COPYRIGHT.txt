@@ -1,0 +1,13 @@
+Superlance is Copyright (c) 2019 Yuvaraj Loganathan
+All Rights Reserved
+
+Superhooks is Copyright (c) 2019 Yuvaraj Loganathan
+
+  This software is subject to the provisions of the license at
+  http://www.repoze.org/LICENSE.txt . A copy of this license should
+  accompany this distribution.  THIS SOFTWARE IS PROVIDED "AS IS" AND
+  ANY AND ALL EXPRESS OR IMPLIED WARRANTIES ARE DISCLAIMED, INCLUDING,
+  BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF TITLE,
+  MERCHANTABILITY, AGAINST INFRINGEMENT, AND FITNESS FOR A PARTICULAR
+  PURPOSE.
+
