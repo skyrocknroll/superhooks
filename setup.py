@@ -31,10 +31,11 @@ except (IOError, OSError):
     CHANGES = ''
 
 setup(name='superhooks',
-      version='0.2',
+      version='0.3',
       license='BSD-derived (http://www.repoze.org/LICENSE.txt)',
       description='superhooks plugin for supervisord',
       long_description=README + '\n\n' + CHANGES,
+      long_description_content_type='text/markdown',
       classifiers=[
           "Development Status :: 3 - Alpha",
           'Environment :: No Input/Output (Daemon)',
