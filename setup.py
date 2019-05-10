@@ -22,16 +22,16 @@ from setuptools import setup, find_packages
 
 here = os.path.abspath(os.path.dirname(__file__))
 try:
-    README = open(os.path.join(here, 'README.txt')).read()
+    README = open(os.path.join(here, 'README.md')).read()
 except (IOError, OSError):
     README = ''
 try:
-    CHANGES = open(os.path.join(here, 'CHANGES.txt')).read()
+    CHANGES = open(os.path.join(here, 'CHANGES.md')).read()
 except (IOError, OSError):
     CHANGES = ''
 
 setup(name='superhooks',
-      version='0.1',
+      version='0.2',
       license='BSD-derived (http://www.repoze.org/LICENSE.txt)',
       description='superhooks plugin for supervisord',
       long_description=README + '\n\n' + CHANGES,
