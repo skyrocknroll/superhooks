@@ -29,6 +29,11 @@ try:
     CHANGES = open(os.path.join(here, 'CHANGES.md')).read()
 except (IOError, OSError):
     CHANGES = ''
+# 'setup.py publish' shortcut.
+if sys.argv[-1] == 'publish':
+    os.system('python setup.py sdist bdist_wheel')
+    os.system('twine upload dist/*')
+    sys.exit()
 
 setup(name='superhooks',
       version='0.3',
