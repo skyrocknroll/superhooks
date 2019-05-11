@@ -118,14 +118,14 @@ class SuperHooks(ProcessStateMonitor):
             processname, from_state, eventname = msg.rsplit(';')
             params = {'process_name': processname, 'from_state': from_state, 'event_name': eventname}
             if self.data:
-                for item in self.data.split("::"):
-                    kv = item.split(":")
+                for item in self.data.split("^^"):
+                    kv = item.split("^")
                     if len(kv) == 2:
                         params[kv[0]] = kv[1]
             headers = {}
             if self.headers:
-                for item in self.headers.split("::"):
-                    kv = item.split(":")
+                for item in self.headers.split("^^"):
+                    kv = item.split("^")
                     if len(kv) == 2:
                         headers[kv[0]] = kv[1]
             requests.post(self.url, data=params, headers=headers)

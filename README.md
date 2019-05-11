@@ -13,7 +13,7 @@ pip install superhooks
 ## Command-Line Syntax
 
 ```bash
-$ superhooks  -u http://localhost:8090/ -e STARTING,RUNNING,BACKOFF,STOPPING,FATAL,EXITED,STOPPED,UNKNOWN -d a:b::c:d -H p:q::r:s 
+$ superhooks  -u http://localhost:8090/ -e STARTING,RUNNING,BACKOFF,STOPPING,FATAL,EXITED,STOPPED,UNKNOWN -d "a^b^^c^d" -H "p^q^^r^s" 
 ```
 
 ### Options
@@ -22,9 +22,9 @@ $ superhooks  -u http://localhost:8090/ -e STARTING,RUNNING,BACKOFF,STOPPING,FAT
 
 Post the payload to the url with http `POST`
 
-```-d DATA, --data=a:b::c:d``` post body data as key value pair items are separated by `::` and key and values are separated by `:`
+```-d DATA, --data=a^b^^c^d``` post body data as key value pair items are separated by `^^` and key and values are separated by `^`
 
-```-H HEADERS, --headers=p:q::r:s``` request headers with as key value pair items are separated by `::` and key and values are separated by `:`
+```-H HEADERS, --headers=p^q^^r^s``` request headers with as key value pair items are separated by `^^` and key and values are separated by `^`
 
 ```-e EVENTS, --event=EVENTS```
 
@@ -38,11 +38,27 @@ The following example assume that `superhooks` is on your system `PATH`.
 
 ```
 [eventlistener:superhooks]
-command=python /usr/local/bin/superhooks -u http://localhost:8090/ -e BACKOFF,FATAL,EXITED,UNKNOWN -d a:b::c:d -H p:q::r:s
+command=python /usr/local/bin/superhooks -u http://localhost:8090/ -e BACKOFF,FATAL,EXITED,UNKNOWN -d "a^b^^c^d" -H "p^q^^r^s"
 events=PROCESS_STATE,TICK_60
 
 ```
+### The above configuration  will produce following payload for an crashing process named envoy
 
+```
+from_state=STARTING&event_name=PROCESS_STATE_BACKOFF&c=d&process_name=envoy%3Aenvoy&a=b
+POST / HTTP/1.1
+Host: localhost:8090
+Accept: */*
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Content-Length: 84
+Content-Type: application/x-www-form-urlencoded
+P: q
+R: s
+User-Agent: python-requests/2.12.1
+
+from_state=BACKOFF&event_name=PROCESS_STATE_FATAL&c=d&process_name=envoy%3Aenvoy&a=b
+```
 
 ### Notes
 * All the events will be buffered for 1 min and pushed to web hooks. 
