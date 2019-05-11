@@ -1,3 +1,7 @@
+0.4 (2019-05-11)
+----------------
+- Switched from semicolon(;) to cap(^) as separator
+
 0.2 (2019-05-11)
 ----------------
 - Fixed Readme

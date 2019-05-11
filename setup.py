@@ -31,8 +31,10 @@ except (IOError, OSError):
     CHANGES = ''
 # 'setup.py publish' shortcut.
 if sys.argv[-1] == 'publish':
-    os.system('python setup.py sdist bdist_wheel')
-    os.system('twine upload dist/*')
+    os.system('python2 setup.py sdist bdist_wheel')
+    os.system('python3 setup.py sdist bdist_wheel')
+    os.system('twine upload dist/superhooks*.tar.gz')
+    os.system('twine upload dist/superhooks*.whl')
     sys.exit()
 
 setup(name='superhooks',

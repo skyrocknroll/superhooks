@@ -62,3 +62,7 @@ from_state=BACKOFF&event_name=PROCESS_STATE_FATAL&c=d&process_name=envoy%3Aenvoy
 
 ### Notes
 * All the events will be buffered for 1 min and pushed to web hooks. 
+
+### Development 
+* Modify the changes.
+* Execute `python setup.py publish` 
