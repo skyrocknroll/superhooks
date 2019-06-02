@@ -5,7 +5,7 @@ import mock
 
 class SuperHooksTests(unittest.TestCase):
     url = 'http://localhost:8090/'
-    unexpected_err_msg = 'bar:foo;BACKOFF;PROCESS_STATE_FATAL'
+    unexpected_err_msg = 'bar:foo;BACKOFF;PROCESS_STATE_FATAL;processname:foo groupname:bar from_state:BACKOFF '
     events = 'FATAL,EXITED'
 
     def _get_target_class(self):

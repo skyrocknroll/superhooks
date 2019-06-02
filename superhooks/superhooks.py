@@ -109,14 +109,18 @@ class SuperHooks(ProcessStateMonitor):
 
     def get_process_state_change_msg(self, headers, payload):
         pheaders, pdata = childutils.eventdata(payload + '\n')
-        return "{groupname}:{processname};{from_state};{event}".format(
-            event=headers['eventname'], **pheaders
+        pheaders_all = ""
+        for k, v in pheaders.items():
+            pheaders_all = pheaders_all + k + ":" + v + " "
+        return "{groupname}:{processname};{from_state};{event};{pheaders_all}".format(
+            event=headers['eventname'], pheaders_all=pheaders_all, **pheaders
         )
 
     def send_batch_notification(self):
         for msg in self.batchmsgs:
-            processname, from_state, eventname = msg.rsplit(';')
-            params = {'process_name': processname, 'from_state': from_state, 'event_name': eventname}
+            processname, from_state, eventname, pheaders_all = msg.rsplit(';')
+            params = {'process_name': processname, 'from_state': from_state, 'event_name': eventname,
+                      'pheaders_all': pheaders_all}
             if self.data:
                 for item in self.data.split("^^"):
                     kv = item.split("^")

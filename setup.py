@@ -38,7 +38,7 @@ if sys.argv[-1] == 'publish':
     sys.exit()
 
 setup(name='superhooks',
-      version='0.4',
+      version='0.5',
       license='BSD-derived (http://www.repoze.org/LICENSE.txt)',
       description='superhooks plugin for supervisord',
       long_description=README + '\n\n' + CHANGES,

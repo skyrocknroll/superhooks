@@ -45,19 +45,18 @@ events=PROCESS_STATE,TICK_60
 ### The above configuration  will produce following payload for an crashing process named envoy
 
 ```
-from_state=STARTING&event_name=PROCESS_STATE_BACKOFF&c=d&process_name=envoy%3Aenvoy&a=b
 POST / HTTP/1.1
 Host: localhost:8090
 Accept: */*
 Accept-Encoding: gzip, deflate
 Connection: keep-alive
-Content-Length: 84
+Content-Length: 177
 Content-Type: application/x-www-form-urlencoded
 P: q
 R: s
 User-Agent: python-requests/2.12.1
 
-from_state=BACKOFF&event_name=PROCESS_STATE_FATAL&c=d&process_name=envoy%3Aenvoy&a=b
+from_state=RUNNING&a=b&c=d&event_name=PROCESS_STATE_EXITED&process_name=cat%3Ameow&pheaders_all=from_state%3ARUNNING+processname%3Ameow+pid%3A25232+expected%3A0+groupname%3Acat+
 ```
 
 ### Notes
