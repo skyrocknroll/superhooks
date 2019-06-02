@@ -1,6 +1,6 @@
-0.5 (2019-05-11)
+0.5 (2019-06-2)
 ----------------
-- Sending the complete supervisor data under the key name `pheaders_all`.
+- Sending the complete supervisor data under the key name `pheaders_all`
 
 0.4 (2019-05-11)
 ----------------

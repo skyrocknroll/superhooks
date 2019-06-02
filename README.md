@@ -28,8 +28,7 @@ Post the payload to the url with http `POST`
 
 ```-e EVENTS, --event=EVENTS```
 
-The Supervisor Process State event(s) to listen for. It can be any, one of, or all of
-STARTING, RUNNING, BACKOFF, STOPPING, EXITED, STOPPED, UNKNOWN.
+The Supervisor Process State event(s) to listen for. It can be any, one of, or all of STARTING, RUNNING, BACKOFF, STOPPING, EXITED, STOPPED, UNKNOWN.
 
 ## Configuration
 An `[eventlistener:x]` section must be placed in `supervisord.conf` in order for `superhooks` to do its work. See the “Events” chapter in the Supervisor manual for more information about event listeners.
