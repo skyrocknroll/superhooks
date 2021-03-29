@@ -6,7 +6,7 @@ idna==2.8
 meld3==1.0.2
 mock==3.0.5
 pkginfo==1.5.0.1
-Pygments==2.4.0
+Pygments==2.7.4
 readme-renderer==24.0
 requests==2.21.0
 requests-toolbelt==0.9.1
