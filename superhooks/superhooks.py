@@ -54,7 +54,8 @@ class SuperHooks(ProcessStateMonitor):
 
         parser = OptionParser()
         parser.add_option("-u", "--url", help="Web Hook URL")
-        parser.add_option("-d", "--data", help="data in key value pair ex: `foo:bar::goo:baz`")
+        parser.add_option("-d", "--data", help="data in key value pair ex: `foo:bar::goo:baz`"
+                                               " if 'dump_params' is used as value `foo:dump_params` foo will dump `eventname` and all params")
         parser.add_option("-H", "--headers", help="headers in key value pair ex: `foo:bar::goo:baz`")
         parser.add_option("-e", "--events",
                           help="Supervisor event(s). Can be any, some or all of {} as comma separated values".format(
@@ -125,7 +126,10 @@ class SuperHooks(ProcessStateMonitor):
                 for item in self.data.split("^^"):
                     kv = item.split("^")
                     if len(kv) == 2:
-                        params[kv[0]] = kv[1]
+                        if kv[1] == 'dump_params':
+                            params[kv[0]] = eventname+'\n'+pheaders_all.replace(' ', '\n').replace(':', ': ')
+                        else:
+                            params[kv[0]] = kv[1]
             headers = {}
             if self.headers:
                 for item in self.headers.split("^^"):
