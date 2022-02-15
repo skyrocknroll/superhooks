@@ -14,6 +14,8 @@ pip install superhooks
 
 ```bash
 $ superhooks  -u http://localhost:8090/ -e STARTING,RUNNING,BACKOFF,STOPPING,FATAL,EXITED,STOPPED,UNKNOWN -d "a^b^^c^d" -H "p^q^^r^s" 
+# Telegram Example
+$ superhooks  -u https://api.telegram.org/bot$YOURBOT/sendMessage -d "chat_id^$YOURID^^text^dump_params^^disable_notifications^true" -e  STARTING, RUNNING, BACKOFF, STOPPING, EXITED, STOPPED, UNKNOWN
 ```
 
 ### Options
@@ -22,7 +24,7 @@ $ superhooks  -u http://localhost:8090/ -e STARTING,RUNNING,BACKOFF,STOPPING,FAT
 
 Post the payload to the url with http `POST`
 
-```-d DATA, --data=a^b^^c^d``` post body data as key value pair items are separated by `^^` and key and values are separated by `^`
+```-d DATA, --data=a^b^^c^d``` post body data as key value pair items are separated by `^^` and key and values are separated by `^`, if `dump_params` is used as value `foo:dump_params` foo will dump `eventname` and all params
 
 ```-H HEADERS, --headers=p^q^^r^s``` request headers with as key value pair items are separated by `^^` and key and values are separated by `^`
 
